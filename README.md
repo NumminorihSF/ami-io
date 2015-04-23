@@ -15,7 +15,7 @@ Simple example:
 ```js
 
     var AmiIo = require("ami-io"),
-        amiio = AmiIo.createClient();
+        amiio = AmiIo.createClient(),
         amiio2 = new AmiIo.Client();
 
     //Both of this are similar
@@ -77,6 +77,10 @@ Used events you can see below.
 ### "event"
 
 `client` will emit `event` when has new event object. All of them should find at https://wiki.asterisk.org/wiki/display/AST/Asterisk+11+AMI+Events.
+
+### "rawEvent"
+
+`client` will emit `rawEvent` when has new event object or a part of response object. Note that use event and rawEvent at the same time is not a good idea.
 
 
 ## amiio.createClient()
