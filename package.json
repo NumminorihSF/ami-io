@@ -1,0 +1,20 @@
+{
+  "author": "Konstantine Petryaev <numminorihsf@gmail.com>",
+  "name": "ami-io",
+  "description": "Asterisk Manager Interface client.",
+  "version": "0.1.1",
+  "keywords": [
+    "asterisk",
+    "manager",
+    "interface",
+    "node",
+    "iojs",
+    "ami"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/NumminorihSF/ami-io.git"
+  },
+  "main": "index.js",
+  "license": "MIT"
+}
