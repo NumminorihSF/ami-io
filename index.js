@@ -72,72 +72,72 @@ else {
     config.login = config.login  || args[0] || 'admin';
     config.password = config.password || args[1] || 'password';
 
-    var ami = new lib.Connect(config);
+    var amiio = new lib.Client(config);
 
-    ami.on('incorrectServer', function () {
-        ami.logger.error("Invalid AMI welcome message. Are you sure if this is AMI?");
+    amiio.on('incorrectServer', function () {
+        amiio.logger.error("Invalid AMI welcome message. Are you sure if this is AMI?");
         process.exit();
     });
-    ami.on('connectionRefused', function(){
-        ami.logger.error("Connection refused.");
+    amiio.on('connectionRefused', function(){
+        amiio.logger.error("Connection refused.");
         process.exit();
     });
-    ami.on('incorrectLogin', function () {
-        ami.logger.error("Incorrect login or password.");
+    amiio.on('incorrectLogin', function () {
+        amiio.logger.error("Incorrect login or password.");
         process.exit();
     });
-    ami.on('event', function(event){
-        ami.logger.info(event);
+    amiio.on('event', function(event){
+        amiio.logger.info('event!!!', event);
     });
-    ami.on('connected', function(){
-        ami.send(new lib.Action.Ping(), function(err, data){
-            if (err) /*return*/ ami.logger.error('PING', err);
-            /*return*/ ami.logger.info('PING', data);
+    amiio.on('connected', function(){
+        amiio.send(new lib.Action.Ping(), function(err, data){
+            if (err) /*return*/ amiio.logger.error('PING', err);
+            /*return*/ amiio.logger.info('PING', data);
             process.exit();
         });
-        //ami.send(new lib.Action.CoreStatus(), function(err, data){
-        //    if (err) return ami.logger.error(err);
-        //    return ami.logger.info(data);
+        //amiio.send(new lib.Action.CoreStatus(), function(err, data){
+        //    if (err) return amiio.logger.error(err);
+        //    return amiio.logger.info(data);
         //});
-        //ami.send(new lib.Action.CoreSettings(), function(err, data){
-        //    if (err) return ami.logger.error(err);
-        //    return ami.logger.info(data);
+        //amiio.send(new lib.Action.CoreSettings(), function(err, data){
+        //    if (err) return amiio.logger.error(err);
+        //    return amiio.logger.info(data);
         //});
-        //ami.send(new lib.Action.Status(), function(err, data){
-        //    if (err) return ami.logger.error(err);
-        //    return ami.logger.info(data);
+        //amiio.send(new lib.Action.Status(), function(err, data){
+        //    if (err) return amiio.logger.error(err);
+        //    return amiio.logger.info(data);
         //});
-        //ami.send(new lib.Action.ListCommands(), function(err, data){
-        //    if (err) return ami.logger.error(err);
-        //    return ami.logger.info(data);
+        //amiio.send(new lib.Action.ListCommands(), function(err, data){
+        //    if (err) return amiio.logger.error(err);
+        //    return amiio.logger.info(data);
         //});
-        //ami.send(new lib.Action.QueueStatus(), function(err, data){
-        //    if (err) return ami.logger.error(err);
-        //    return ami.logger.info(data);
+        //amiio.send(new lib.Action.QueueStatus(), function(err, data){
+        //    if (err) return amiio.logger.error(err);
+        //    return amiio.logger.info(data);
         //});
-        //ami.send(new lib.Action.GetConfig('sip.conf'), function(err, data){
-        //    if (err) return ami.logger.error(err);
-        //    return ami.logger.info(data);
+        //amiio.send(new lib.Action.GetConfig('sip.conf'), function(err, data){
+        //    if (err) return amiio.logger.error(err);
+        //    return amiio.logger.info(data);
         //});
-        //ami.send(new lib.Action.GetConfigJson('sip.conf'), function(err, data){
-        //    if (err) return ami.logger.error(err);
-        //    return ami.logger.info(data);
+        //amiio.send(new lib.Action.GetConfigJson('sip.conf'), function(err, data){
+        //    if (err) return amiio.logger.error(err);
+        //    return amiio.logger.info(data);
         //});
     });
 
 
     process.on('SIGINT', function () {
-        ami.disconnect();
+        amiio.disconnect();
         process.exit();
     });
     process.on('SIGTERM', function () {
-        ami.disconnect();
+        amiio.disconnect();
         process.exit();
     });
     setTimeout(function(){
         process.emit('SIGINT');
     }, 60000);
-    ami.connect();
+    amiio.connect();
 }
 
 
