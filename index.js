@@ -91,37 +91,38 @@ else {
     });
     ami.on('connected', function(){
         ami.send(new lib.Action.Ping(), function(err, data){
-            if (err) return ami.logger.error(err);
-            return ami.logger.info(data);
+            if (err) /*return*/ ami.logger.error('PING', err);
+            /*return*/ ami.logger.info('PING', data);
+            process.exit();
         });
-        ami.send(new lib.Action.CoreStatus(), function(err, data){
-            if (err) return ami.logger.error(err);
-            return ami.logger.info(data);
-        });
-        ami.send(new lib.Action.CoreSettings(), function(err, data){
-            if (err) return ami.logger.error(err);
-            return ami.logger.info(data);
-        });
-        ami.send(new lib.Action.Status(), function(err, data){
-            if (err) return ami.logger.error(err);
-            return ami.logger.info(data);
-        });
-        ami.send(new lib.Action.ListCommands(), function(err, data){
-            if (err) return ami.logger.error(err);
-            return ami.logger.info(data);
-        });
-        ami.send(new lib.Action.QueueStatus(), function(err, data){
-            if (err) return ami.logger.error(err);
-            return ami.logger.info(data);
-        });
-        ami.send(new lib.Action.GetConfig('sip.conf'), function(err, data){
-            if (err) return ami.logger.error(err);
-            return ami.logger.info(data);
-        });
-        ami.send(new lib.Action.GetConfigJson('sip.conf'), function(err, data){
-            if (err) return ami.logger.error(err);
-            return ami.logger.info(data);
-        });
+        //ami.send(new lib.Action.CoreStatus(), function(err, data){
+        //    if (err) return ami.logger.error(err);
+        //    return ami.logger.info(data);
+        //});
+        //ami.send(new lib.Action.CoreSettings(), function(err, data){
+        //    if (err) return ami.logger.error(err);
+        //    return ami.logger.info(data);
+        //});
+        //ami.send(new lib.Action.Status(), function(err, data){
+        //    if (err) return ami.logger.error(err);
+        //    return ami.logger.info(data);
+        //});
+        //ami.send(new lib.Action.ListCommands(), function(err, data){
+        //    if (err) return ami.logger.error(err);
+        //    return ami.logger.info(data);
+        //});
+        //ami.send(new lib.Action.QueueStatus(), function(err, data){
+        //    if (err) return ami.logger.error(err);
+        //    return ami.logger.info(data);
+        //});
+        //ami.send(new lib.Action.GetConfig('sip.conf'), function(err, data){
+        //    if (err) return ami.logger.error(err);
+        //    return ami.logger.info(data);
+        //});
+        //ami.send(new lib.Action.GetConfigJson('sip.conf'), function(err, data){
+        //    if (err) return ami.logger.error(err);
+        //    return ami.logger.info(data);
+        //});
     });
 
 
