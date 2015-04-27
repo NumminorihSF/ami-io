@@ -73,7 +73,8 @@ else {
     config.password = config.password || args[1] || 'password';
 
     var amiio = new lib.Client(config);
-
+    var count = 0;
+    var time = new Date();
     amiio.on('incorrectServer', function () {
         amiio.logger.error("Invalid AMI welcome message. Are you sure if this is AMI?");
         process.exit();
@@ -87,42 +88,48 @@ else {
         process.exit();
     });
     amiio.on('event', function(event){
-        amiio.logger.info('event!!!', event);
+        count++;
+//events that ami sends by itself
+    });
+    amiio.on('responseEvent', function(event){
+//evants that ami sends as part of responses
+    });
+    amiio.on('rawEvent', function(event){
+//every event that ami sends (event + responseEvent)
     });
     amiio.on('connected', function(){
         amiio.send(new lib.Action.Ping(), function(err, data){
-            if (err) /*return*/ amiio.logger.error('PING', err);
-            /*return*/ amiio.logger.info('PING', data);
-            process.exit();
+            if (err) amiio.logger.error('PING', err);
+             amiio.logger.info('PING', data);
         });
-        //amiio.send(new lib.Action.CoreStatus(), function(err, data){
-        //    if (err) return amiio.logger.error(err);
-        //    return amiio.logger.info(data);
-        //});
-        //amiio.send(new lib.Action.CoreSettings(), function(err, data){
-        //    if (err) return amiio.logger.error(err);
-        //    return amiio.logger.info(data);
-        //});
-        //amiio.send(new lib.Action.Status(), function(err, data){
-        //    if (err) return amiio.logger.error(err);
-        //    return amiio.logger.info(data);
-        //});
-        //amiio.send(new lib.Action.ListCommands(), function(err, data){
-        //    if (err) return amiio.logger.error(err);
-        //    return amiio.logger.info(data);
-        //});
-        //amiio.send(new lib.Action.QueueStatus(), function(err, data){
-        //    if (err) return amiio.logger.error(err);
-        //    return amiio.logger.info(data);
-        //});
-        //amiio.send(new lib.Action.GetConfig('sip.conf'), function(err, data){
-        //    if (err) return amiio.logger.error(err);
-        //    return amiio.logger.info(data);
-        //});
-        //amiio.send(new lib.Action.GetConfigJson('sip.conf'), function(err, data){
-        //    if (err) return amiio.logger.error(err);
-        //    return amiio.logger.info(data);
-        //});
+        amiio.send(new lib.Action.CoreStatus(), function(err, data){
+            if (err) return amiio.logger.error(err);
+            return amiio.logger.info(data);
+        });
+        amiio.send(new lib.Action.CoreSettings(), function(err, data){
+            if (err) return amiio.logger.error(err);
+            return amiio.logger.info(data);
+        });
+        amiio.send(new lib.Action.Status(), function(err, data){
+            if (err) return amiio.logger.error(err);
+            return amiio.logger.info(data);
+        });
+        amiio.send(new lib.Action.ListCommands(), function(err, data){
+            if (err) return amiio.logger.error(err);
+            return amiio.logger.info(data);
+        });
+        amiio.send(new lib.Action.QueueStatus(), function(err, data){
+            if (err) return amiio.logger.error(err);
+            return amiio.logger.info(data);
+        });
+        amiio.send(new lib.Action.GetConfig('sip.conf'), function(err, data){
+            if (err) return amiio.logger.error(err);
+            return amiio.logger.info(data);
+        });
+        amiio.send(new lib.Action.GetConfigJson('sip.conf'), function(err, data){
+            if (err) return amiio.logger.error(err);
+            return amiio.logger.info(data);
+        });
     });
 
 
@@ -134,9 +141,13 @@ else {
         amiio.disconnect();
         process.exit();
     });
-    setTimeout(function(){
-        process.emit('SIGINT');
-    }, 60000);
+    setInterval(function(){
+        console.log('Count of events:', count);
+        console.log('Events in second:', count/(new Date() - time));
+        console.log('Mem:', Math.floor(process.memoryUsage().rss/(1024*1024)));
+        console.log('Heap:', Math.floor(process.memoryUsage().heapUsed*10000/process.memoryUsage().heapTotal)/100+'%', '('+Math.floor(process.memoryUsage().heapTotal/(1024*1024))+")");
+//        process.emit('SIGINT');
+    }, 300000);
     amiio.connect();
 }
 

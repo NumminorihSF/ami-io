@@ -74,14 +74,21 @@ Used events you can see below.
 
 `client` will emit `disconnect` when connection close.
 
+## AMI Events
+
 ### "event"
 
 `client` will emit `event` when has new event object. All of them should find at https://wiki.asterisk.org/wiki/display/AST/Asterisk+11+AMI+Events.
+
+### "responseEvent"
+
+`client` will emit `responseEvent` when some response has event as part of itself.
 
 ### "rawEvent"
 
 `client` will emit `rawEvent` when has new event object or a part of response object. Note that use event and rawEvent at the same time is not a good idea.
 
+# Methods
 
 ## amiio.createClient()
 
@@ -258,6 +265,18 @@ Available actions:
 * VoicemailUsersList
 
 Description of all commands and variables they need, you can find at https://wiki.asterisk.org/wiki/display/AST/Asterisk+11+AMI+Actions
+All values, needed in commands, should passed like this:
+
+```js
+    var action = new amiio.Action.QueueSummary();
+    action.queue = "some queue's name";
+    amiioClient.send(action, function(err, data){
+        if (err){
+            //in current time - may be without error. need test
+            //err === null if ami response match(/success/i), else response will pass as error
+        }
+    });
+```
 
 
 
