@@ -78,7 +78,8 @@ Used events you can see below.
 
 ### "event"
 
-`client` will emit `event` when has new event object. All of them should find at https://wiki.asterisk.org/wiki/display/AST/Asterisk+11+AMI+Events.
+`client` will emit `event` when has new event object. All of them should find at
+https://wiki.asterisk.org/wiki/display/AST/Asterisk+11+AMI+Events.
 
 ### "responseEvent"
 
@@ -86,7 +87,8 @@ Used events you can see below.
 
 ### "rawEvent"
 
-`client` will emit `rawEvent` when has new event object or a part of response object. Note that use event and rawEvent at the same time is not a good idea.
+`client` will emit `rawEvent` when has new event object or a part of response object.
+Note that use event and rawEvent at the same time is not a good idea.
 
 # Methods
 
@@ -133,14 +135,16 @@ Forcibly close the connection to the AMI server.  Also stop reconnecting.
 
 ## client.unref()
 
-Call `unref()` on the underlying socket connection to the AMI server, allowing the program to exit once no more commands are pending.
+Call `unref()` on the underlying socket connection to the AMI server,
+allowing the program to exit once no more commands are pending.
 
 ```js
 var AmiIo = require("ami-io");
 var client = AmiIo.createClient();
 
 /*
-    Calling unref() will allow this program to exit immediately after the get command finishes. Otherwise the client would hang as long as the client-server connection is alive.
+    Calling unref() will allow this program to exit immediately after the get command finishes.
+    Otherwise the client would hang as long as the client-server connection is alive.
 */
 client.unref();
 //will close process if only AmiIo is in it.
@@ -153,7 +157,8 @@ Call `ref()` will cancel `unref()` effect.
 
 ## client.useLogger
 
-Use `client.useLogger(LoggerObject)` if you want to use some another logger. By default use console and ignore any logging levels.
+Use `client.useLogger(LoggerObject)` if you want to use some another logger.
+By default use console and ignore any logging levels.
 
 ```js
 var AmiIo = require("ami-io");
@@ -161,7 +166,8 @@ var client = AmiIo.createClient();
 var client.useLogger(logger);
 ```
 
-logger should has `trace`,`debug`,`info`,`warn`,`error`,`fatal` methods. Of course you can emulate them if some lib has not it.
+logger should has `trace`,`debug`,`info`,`warn`,`error`,`fatal` methods.
+Of course you can emulate them if some lib has not it.
 
 
 # Extras
@@ -264,7 +270,8 @@ Available actions:
 * UnpauseMonitor
 * VoicemailUsersList
 
-Description of all commands and variables they need, you can find at https://wiki.asterisk.org/wiki/display/AST/Asterisk+11+AMI+Actions
+Description of all commands and variables they need, you can find at
+https://wiki.asterisk.org/wiki/display/AST/Asterisk+11+AMI+Actions
 All values, needed in commands, should passed like this:
 
 ```js

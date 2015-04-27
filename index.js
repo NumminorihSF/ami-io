@@ -145,7 +145,8 @@ else {
         console.log('Count of events:', count);
         console.log('Events in second:', count/(new Date() - time));
         console.log('Mem:', Math.floor(process.memoryUsage().rss/(1024*1024)));
-        console.log('Heap:', Math.floor(process.memoryUsage().heapUsed*10000/process.memoryUsage().heapTotal)/100+'%', '('+Math.floor(process.memoryUsage().heapTotal/(1024*1024))+")");
+        console.log('Heap:', Math.floor(process.memoryUsage().heapUsed*10000/process.memoryUsage().heapTotal)/100+'%',
+            '('+Math.floor(process.memoryUsage().heapTotal/(1024*1024))+")");
 //        process.emit('SIGINT');
     }, 300000);
     amiio.connect();
