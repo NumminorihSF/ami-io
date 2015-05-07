@@ -2,7 +2,7 @@
   "author": "Konstantine Petryaev <numminorihsf@gmail.com>",
   "name": "ami-io",
   "description": "Asterisk Manager Interface client.",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "keywords": [
     "asterisk",
     "manager",

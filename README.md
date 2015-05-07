@@ -90,6 +90,13 @@ https://wiki.asterisk.org/wiki/display/AST/Asterisk+11+AMI+Events.
 `client` will emit `rawEvent` when has new event object or a part of response object.
 Note that use event and rawEvent at the same time is not a good idea.
 
+### "rawEvent."+eventName
+
+`client` will emit `rawEvent.`+eventName when has new event object or a part of response object.
+You can find event names at https://wiki.asterisk.org/wiki/display/AST/Asterisk+11+AMI+Events
+
+
+
 # Methods
 
 ## amiio.createClient()
