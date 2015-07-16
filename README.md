@@ -47,6 +47,11 @@ Simple example:
 
 Used events you can see below.
 
+### Standalone run
+
+You can use `node index.js user password [host[:port]] [-h host] [-p port]` to test lib and watch events on screen.
+Also, if you use `-f filePath` parameter on run - before close node, it will try to write array of events to file.
+
 
 # API
 

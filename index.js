@@ -48,6 +48,10 @@ else {
         process.exit();
     }
 
+    if (args.indexOf('-f') !== -1){
+        var file = args.indexOf('-f') + 1;
+    }
+
     if (args.length < 3) {
         console.error(syntax);
         process.exit(1);
@@ -75,6 +79,11 @@ else {
     var amiio = new lib.Client(config);
     var count = 0;
     var time = new Date();
+    var eventsArray = [];
+    if (file) amiio.on('event', function(event){
+        eventsArray.push(event);
+    });
+
     amiio.on('incorrectServer', function () {
         amiio.logger.error("Invalid AMI welcome message. Are you sure if this is AMI?");
         process.exit();
@@ -135,10 +144,12 @@ else {
 
     process.on('SIGINT', function () {
         amiio.disconnect();
+        if (file) require('fs').writeFileSync(file, JSON.stringify(eventsArray, null, '  '), {encoding: 'utf8'});
         process.exit();
     });
     process.on('SIGTERM', function () {
         amiio.disconnect();
+        if (file) require('fs').writeFileSync(file, JSON.stringify(eventsArray, null, '  '), {encoding: 'utf8'});
         process.exit();
     });
     setInterval(function(){
@@ -151,7 +162,5 @@ else {
     }, 300000);
     amiio.connect();
 }
-
-
 
 
