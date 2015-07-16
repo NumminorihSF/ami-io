@@ -49,7 +49,7 @@ else {
     }
 
     if (args.indexOf('-f') !== -1){
-        var file = args.indexOf('-f') + 1;
+        var file = args[args.indexOf('-f') + 1];
     }
 
     if (args.length < 3) {
