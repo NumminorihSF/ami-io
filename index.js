@@ -144,12 +144,12 @@ else {
 
     process.on('SIGINT', function () {
         amiio.disconnect();
-        if (file) require('fs').writeFileSync(file, JSON.stringify(eventsArray, null, '  '), {encoding: 'utf8'});
+        if (file) require('fs').writeFileSync(file, JSON.stringify(eventsArray.map(function(v){delete v.incomingData; return v;}), null, '  '), {encoding: 'utf8'});
         process.exit();
     });
     process.on('SIGTERM', function () {
         amiio.disconnect();
-        if (file) require('fs').writeFileSync(file, JSON.stringify(eventsArray, null, '  '), {encoding: 'utf8'});
+        if (file) require('fs').writeFileSync(file, JSON.stringify(eventsArray.map(function(v){delete v.incomingData; return v;}), null, '  '), {encoding: 'utf8'});
         process.exit();
     });
     setInterval(function(){
