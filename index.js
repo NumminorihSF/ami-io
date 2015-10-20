@@ -131,6 +131,10 @@ else {
             if (err) return amiio.logger.error(err);
             return amiio.logger.info(data);
         });
+        amiio.send(new lib.Action.QueueSummary(), function(err, data){
+            if (err) return amiio.logger.error(err);
+            return amiio.logger.info(data);
+        });
         amiio.send(new lib.Action.GetConfig('sip.conf'), function(err, data){
             if (err) return amiio.logger.error(err);
             return amiio.logger.info(data);
