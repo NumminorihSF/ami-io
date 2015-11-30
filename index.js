@@ -40,8 +40,8 @@ else {
 
     var args = process.argv.slice(2);
     var syntax = 'Use: [iojs|node] ami-io user password [host[:port]] [-h host] [-p port]\n' +
-        ' -h host - AMI host (default 127.0.0.1)\n' +
-        ' -p port - AMI port (default 5038)\n';
+      ' -h host - AMI host (default 127.0.0.1)\n' +
+      ' -p port - AMI port (default 5038)\n';
 
     if (args.indexOf('?') !== -1 || args.indexOf('help') !== -1 || args.indexOf('--help') !== -1) {
         console.info(syntax);
@@ -107,45 +107,42 @@ else {
 //every event that ami sends (event + responseEvent)
     });
     amiio.on('connected', function(){
-	setImmediate(function(){
-      //var action = new namiLib.Actions.Originate();
-      //action.Channel = 'sip/'+ring.sip;    //'Local/'+ring.num+'@Office';
-      //action.Context = ring.context || 'Office';
-      //action.Exten = ring.num;
-      //if (!ring.timeout) action.Timeout = 15000;
-      //else action.Timeout = ring.timeout;
-      //action.Priority = 1;
-      //if (!ring.callerId) action.CallerID = 'Возьми трубку';
-      //else action.CallerID = ring.callerId;
-      //action.Async = true;
-      //connect.namis[astId].send(action, function (data) {
-      //    if (data.response == 'Success') return callback(false, true);
-      //    return callback(data, null);
-      //});
-	var act = new lib.Action.Originate();
-	act.Application = 'Dial';
-	act.Channel = 'sip/526';
-//	act.Exten = 'sip/508@Office';
-//	act.Extension = act.Exten;
-//	act.Context = 'default';
- // act.Priority = 1;
-	act.Data = 'local/508@Office,15,f(83912055550)';
-  act.CallerID = '89631874499';
-  act.Async = true;
-      act.WaitEvent = true;
-      amiio.send(act, function(a,b){console.log('\n\n\n\n\n',a,b);
-          //amiio.on('rawEvent', function(e){
-          //    if (e.event === 'OriginateResponse'){
-          //        setImmediate(function() {
-          //            console.log(e);
-                      process.exit();
-          //        });
-          //    }
-          //});
-
-      });
-
-  });
+        amiio.send(new lib.Action.Ping(), function(err, data){
+            if (err) amiio.logger.error('PING', err);
+            amiio.logger.info('PING', data);
+        });
+        amiio.send(new lib.Action.CoreStatus(), function(err, data){
+            if (err) return amiio.logger.error(err);
+            return amiio.logger.info(data);
+        });
+        amiio.send(new lib.Action.CoreSettings(), function(err, data){
+            if (err) return amiio.logger.error(err);
+            return amiio.logger.info(data);
+        });
+        amiio.send(new lib.Action.Status(), function(err, data){
+            if (err) return amiio.logger.error(err);
+            return amiio.logger.info(data);
+        });
+        amiio.send(new lib.Action.ListCommands(), function(err, data){
+            if (err) return amiio.logger.error(err);
+            return amiio.logger.info(data);
+        });
+        amiio.send(new lib.Action.QueueStatus(), function(err, data){
+            if (err) return amiio.logger.error(err);
+            return amiio.logger.info(data);
+        });
+        amiio.send(new lib.Action.QueueSummary(), function(err, data){
+            if (err) return amiio.logger.error(err);
+            return amiio.logger.info(data);
+        });
+        amiio.send(new lib.Action.GetConfig('sip.conf'), function(err, data){
+            if (err) return amiio.logger.error(err);
+            return amiio.logger.info(data);
+        });
+        amiio.send(new lib.Action.GetConfigJson('sip.conf'), function(err, data){
+            if (err) return amiio.logger.error(err);
+            return amiio.logger.info(data);
+        });
     });
 
 
@@ -164,7 +161,7 @@ else {
         console.log('Events in second:', count/(new Date() - time));
         console.log('Mem:', Math.floor(process.memoryUsage().rss/(1024*1024)));
         console.log('Heap:', Math.floor(process.memoryUsage().heapUsed*10000/process.memoryUsage().heapTotal)/100+'%',
-            '('+Math.floor(process.memoryUsage().heapTotal/(1024*1024))+")");
+          '('+Math.floor(process.memoryUsage().heapTotal/(1024*1024))+")");
 //        process.emit('SIGINT');
     }, 300000);
     amiio.connect();

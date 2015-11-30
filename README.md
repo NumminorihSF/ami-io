@@ -297,7 +297,29 @@ All values, needed in commands, should passed like this:
     });
 ```
 
+## Action.Originate
 
+Now, you can send OriginateAction with response like OriginateResponse event.
+See https://wiki.asterisk.org/wiki/display/AST/Asterisk+13+ManagerEvent_OriginateResponse for description.
+
+```js
+    var action = new amiio.Action.Originate();
+    action.Channel = 'sip/123';
+    action.Context = 'default';
+    action.Exten = '456';
+    action.Priority = 1;
+    action.Async = true;
+    action.WaitEvent = true;
+    
+    amiioClient.send(action, function(err, data){
+        if (err){
+            //err will be event like OriginateResponse if (#response !== 'Success')
+        }
+        else {
+            //data is event like OriginateResponse if (#response === 'Success')
+        }
+    });
+```
 
 ## LICENSE - "MIT License"
 
