@@ -7,17 +7,15 @@ describe('AmiIo.Event', function(){
 
   describe('#constructor()', function(){
 
-    it('creates instance of Event', function(done){
+    it('creates instance of Event', function(){
       expect(new Event('')).to.be.instanceOf(Event);
-      done();
     });
 
-    it('has Message as prototype', function(done){
+    it('has Message as prototype', function(){
       expect(new Event('')).to.be.instanceOf(Message);
-      done();
     });
 
-    it('spawns .parse() function from prototype', function(done){
+    it('spawns .parse() function from prototype', function(){
       var spawned = false;
       var old = Event.prototype.parse;
       Event.prototype.parse = function(){
@@ -26,10 +24,11 @@ describe('AmiIo.Event', function(){
       new Event('');
       expect(spawned).to.be.equal(true);
       Event.prototype.parse = old;
-      done();
     });
 
+    it('has #parse() === Message#parse()', function(){
+      expect(Event.prototype.parse).to.be.equal(Message.prototype.parse);
+    });
   });
-
 });
 
