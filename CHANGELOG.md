@@ -1,3 +1,8 @@
+## 1.1.0
+
+Add silent logger.
+
+
 ## 1.0.0
 * Now channel variables (`ChanVariable*`-like key in event) do not rewrite. 
 It make an child object, where all key-value pairs are contained. 

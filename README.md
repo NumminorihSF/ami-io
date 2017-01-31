@@ -15,8 +15,9 @@ Simple example:
 ```js
 
     var AmiIo = require("ami-io"),
+        SilentLogger = new AmiIo.SilentLogger(), //use SilentLogger if you just want remove logs
         amiio = AmiIo.createClient(),
-        amiio2 = new AmiIo.Client();
+        amiio2 = new AmiIo.Client({ logger: SilentLogger });
 
     //Both of this are similar
 
@@ -320,6 +321,11 @@ See https://wiki.asterisk.org/wiki/display/AST/Asterisk+13+ManagerEvent_Originat
         }
     });
 ```
+
+## SilentLogger
+
+If you want remove logs, you may use `AmiIo.SilentLogger`'s instance as logger.
+Just pass it as argument to AmiIo constructor.
 
 ## LICENSE - "MIT License"
 
