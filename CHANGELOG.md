@@ -1,4 +1,4 @@
-### 1.1.1
+### 1.1.2
 Update readme to describe work with variables.
 
 ## 1.1.0
