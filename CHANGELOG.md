@@ -1,3 +1,6 @@
+### 1.1.1
+Update readme to describe work with variables.
+
 ## 1.1.0
 
 Add silent logger.

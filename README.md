@@ -298,6 +298,28 @@ All values, needed in commands, should passed like this:
     });
 ```
 
+### Action Variables
+
+If you need send some variables to AMI, use `action.variables` object like this:
+
+```js
+    var action = new amiio.Action.SomeAction();
+    action.variables.VariableA = 1;
+    action.variables.VariableB = 2;
+    action.variables.VariableC = 3;
+```
+Or you can do it like this:
+```js
+    var action = new amiio.Action.SomeAction();
+    action.variables = {
+      VariableA: 1,
+      VariableB: 2,
+      VariableC: 3
+    };
+```
+
+Be sure, that you don't use the same names for different values.
+
 ## Action.Originate
 
 Now, you can send OriginateAction with response like OriginateResponse event.
