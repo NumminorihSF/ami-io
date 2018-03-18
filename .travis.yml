@@ -4,5 +4,5 @@ node_js:
   - "6"
   - "8"
   - "9"
-script: test
+script: npm test
 after_script: coveralls
