@@ -16,10 +16,8 @@
     "url": "git://github.com/NumminorihSF/ami-io.git"
   },
   "scripts": {
-    "test": "mocha --recursive",
-    "precoveralls": "nyc mocha --report lcovonly -- test --recursive -R spec",
-    "coveralls": "cat coverage/lcov.info | coveralls.js",
-    "postcoveralls": "rm -rf coverage"
+    "test": "nyc mocha --recursive",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
   "main": "index.js",
   "license": "MIT",
