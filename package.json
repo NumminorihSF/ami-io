@@ -16,15 +16,15 @@
     "url": "git://github.com/NumminorihSF/ami-io.git"
   },
   "scripts": {
-    "test": "node_modules/.bin/_mocha --recursive",
-    "coveralls": "npm install istanbul && node --version && node node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha --report lcovonly -- test --recursive -R spec && cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js && rm -rf coverage",
-    "coverage": "istanbul cover node_modules/.bin/_mocha -- --recursive",
-    "postcoverage": "istanbul report"
+    "test": "nyc mocha --recursive",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
-    "chai": "^3.2.0",
-    "mocha": "^2.2.5"
+    "chai": "^4.1.2",
+    "coveralls": "^3.0.0",
+    "mocha": "^5.0.1",
+    "nyc": "^11.4.1"
   }
 }

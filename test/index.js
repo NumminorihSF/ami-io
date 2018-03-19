@@ -18,42 +18,42 @@ describe('AmiIo.Client', function(){
     });
 
     it('use host from config', function(done){
-      expect(new AmiIo.Client({host: '123'})).to.have.deep.property('config.host', '123');
+      expect(new AmiIo.Client({host: '123'})).to.have.nested.property('config.host', '123');
       done();
     });
 
     it('use \'127.0.0.1\' as default host', function(done){
-      expect(new AmiIo.Client()).to.have.deep.property('config.host', '127.0.0.1');
+      expect(new AmiIo.Client()).to.have.nested.property('config.host', '127.0.0.1');
       done();
     });
 
     it('use port from config', function(done){
-      expect(new AmiIo.Client({port: 6666})).to.have.deep.property('config.port', 6666);
+      expect(new AmiIo.Client({port: 6666})).to.have.nested.property('config.port', 6666);
       done();
     });
 
     it('use 5038 as default port', function(done){
-      expect(new AmiIo.Client()).to.have.deep.property('config.port', 5038);
+      expect(new AmiIo.Client()).to.have.nested.property('config.port', 5038);
       done();
     });
 
     it('use login from config', function(done){
-      expect(new AmiIo.Client({login: 'trim'})).to.have.deep.property('config.login', 'trim');
+      expect(new AmiIo.Client({login: 'trim'})).to.have.nested.property('config.login', 'trim');
       done();
     });
 
     it('use \'admin\' as default login', function(done){
-      expect(new AmiIo.Client()).to.have.deep.property('config.login', 'admin');
+      expect(new AmiIo.Client()).to.have.nested.property('config.login', 'admin');
       done();
     });
 
     it('use password from config', function(done){
-      expect(new AmiIo.Client({password: 'ouch'})).to.have.deep.property('config.password', 'ouch');
+      expect(new AmiIo.Client({password: 'ouch'})).to.have.nested.property('config.password', 'ouch');
       done();
     });
 
     it('use \'admin\' as default password', function(done){
-      expect(new AmiIo.Client()).to.have.deep.property('config.password', 'admin');
+      expect(new AmiIo.Client()).to.have.nested.property('config.password', 'admin');
       done();
     });
 
@@ -222,47 +222,47 @@ describe('AmiIo.Client', function(){
     });
 
     it('use host from config', function(done){
-      expect(AmiIo.createClient({host: '123'})).to.have.deep.property('config.host', '123');
+      expect(AmiIo.createClient({host: '123'})).to.have.nested.property('config.host', '123');
       done();
     });
 
     it('use \'127.0.0.1\' as default host', function(done){
-      expect(AmiIo.createClient()).to.have.deep.property('config.host', '127.0.0.1');
+      expect(AmiIo.createClient()).to.have.nested.property('config.host', '127.0.0.1');
       done();
     });
 
     it('use port from config', function(done){
-      expect(AmiIo.createClient({port: 6666})).to.have.deep.property('config.port', 6666);
+      expect(AmiIo.createClient({port: 6666})).to.have.nested.property('config.port', 6666);
       done();
     });
 
     it('use 5038 as default port', function(done){
-      expect(AmiIo.createClient()).to.have.deep.property('config.port', 5038);
+      expect(AmiIo.createClient()).to.have.nested.property('config.port', 5038);
       done();
     });
 
     it('use login from config', function(done){
-      expect(AmiIo.createClient({login: 'trim'})).to.have.deep.property('config.login', 'trim');
+      expect(AmiIo.createClient({login: 'trim'})).to.have.nested.property('config.login', 'trim');
       done();
     });
 
     it('use \'admin\' as default login', function(done){
-      expect(AmiIo.createClient()).to.have.deep.property('config.login', 'admin');
+      expect(AmiIo.createClient()).to.have.nested.property('config.login', 'admin');
       done();
     });
 
     it('use password from config', function(done){
-      expect(AmiIo.createClient({password: 'ouch'})).to.have.deep.property('config.password', 'ouch');
+      expect(AmiIo.createClient({password: 'ouch'})).to.have.nested.property('config.password', 'ouch');
       done();
     });
 
     it('use \'admin\' as default password', function(done){
-      expect(AmiIo.createClient()).to.have.deep.property('config.password', 'admin');
+      expect(AmiIo.createClient()).to.have.nested.property('config.password', 'admin');
       done();
     });
 
     it('use \'<unknown>\' as initial value for version', function(done){
-      expect(AmiIo.createClient()).to.have.property('version', '<unknown>');
+      expect(AmiIo.createClient()).to.nested.property('version', '<unknown>');
       done();
     });
 
