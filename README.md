@@ -1,6 +1,8 @@
 ami-io - node.js/io.js client for Asterisk AMI.
 ===========================
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/NumminorihSF/ami-io.svg)](https://greenkeeper.io/)
+
 This is a AMI client.  List of available commands is below.
 
 Install with:
