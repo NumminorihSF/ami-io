@@ -286,6 +286,7 @@ Available actions:
 * VoicemailUsersList
 * SIPpeerstatus
 * BridgeList
+* BridgeInfo
 
 Description of all commands and variables they need, you can find at
 https://wiki.asterisk.org/wiki/display/AST/Asterisk+11+AMI+Actions
