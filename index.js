@@ -32,7 +32,8 @@ else {
             host: process.env.AMI_HOST ,
             port: process.env.AMI_PORT,
             login: process.env.AMI_LOGIN,
-            password: process.env.AMI_PASSWORD
+            password: process.env.AMI_PASSWORD,
+            encoding: process.env.AMI_ENCODING
         }
     }
 

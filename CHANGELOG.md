@@ -1,3 +1,6 @@
+## 1.2.0
+Add `encoding` into config to allow replace default `ascii` encoding with `utf8`.  
+
 ### 1.1.2
 Update readme to describe work with variables.
 
