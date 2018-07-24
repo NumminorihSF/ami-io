@@ -303,6 +303,13 @@ All values, needed in commands, should passed like this:
     });
 ```
 
+### Custom Action
+If there is not action you need inside available list, you may build action manual 
+and set all variables and fields by yourself. For example:
+```js
+var action = new amiio.Action.Action('MuteAudio');
+``` 
+
 ### Action Variables
 
 If you need send some variables to AMI, use `action.variables` object like this:
