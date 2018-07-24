@@ -1,3 +1,7 @@
+### 1.2.0
+- Add BridgeInfo, BridgeList, SIPpeerstatus actions. ([@oxygen](https://github.com/oxygen))
+
+
 ### 1.1.2
 Update readme to describe work with variables.
 
