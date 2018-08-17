@@ -57,6 +57,16 @@ describe('AmiIo.Client', function(){
       done();
     });
 
+    it('use \'ascii\' as default encoding', function(done){
+      expect(new AmiIo.Client()).to.have.nested.property('config.encoding', 'ascii');
+      done();
+    });
+
+    it('use encoding from config', function(done){
+      expect(new AmiIo.Client({encoding: 'my-encoding'})).to.have.nested.property('config.encoding', 'my-encoding');
+      done();
+    });
+
     it('use \'<unknown>\' as initial value for version', function(done){
       expect(new AmiIo.Client()).to.have.property('version', '<unknown>');
       done();

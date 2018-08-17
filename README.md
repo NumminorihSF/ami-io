@@ -109,7 +109,7 @@ You can find event names at https://wiki.asterisk.org/wiki/display/AST/Asterisk+
 
 ## amiio.createClient()
 
-* `amiio.createClient() = amiio.createClient({port:5038, host:'127.0.0.1', login:'admin', password:'admin'})`
+* `amiio.createClient() = amiio.createClient({port:5038, host:'127.0.0.1', login:'admin', password:'admin', encoding: 'ascii'})`
 
 If some of object key are undefined - will use default value.
 
@@ -117,6 +117,7 @@ If some of object key are undefined - will use default value.
 * `port`: which port amiio should use. Defaults to `5038`.
 * `login`: Default to `admin`.
 * `password`: Default to `admin`.
+* `encoding`: which encoding should amiio use to transfer data. Defaults to `ascii`.
 
 
 ## client.connect([shouldReconnect[, reconnectTimeout]])
