@@ -117,7 +117,8 @@ If some of object key are undefined - will use default value.
 * `port`: which port amiio should use. Defaults to `5038`.
 * `login`: Default to `admin`.
 * `password`: Default to `admin`.
-* `encoding`: which encoding should amiio use to transfer data. Defaults to `ascii`.
+* `encoding`: which encoding should amiio use to transfer data. Defaults to `ascii`. **Be careful** with changing 
+encoding to any other value manually, cause in order to AMI's protocol spec, AMI use ASCII. 
 
 
 ## client.connect([shouldReconnect[, reconnectTimeout]])
