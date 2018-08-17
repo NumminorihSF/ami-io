@@ -1,6 +1,8 @@
 ami-io - node.js/io.js client for Asterisk AMI.
 ===========================
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/NumminorihSF/ami-io.svg)](https://greenkeeper.io/)
+
 This is a AMI client.  List of available commands is below.
 
 Install with:
@@ -282,6 +284,9 @@ Available actions:
 * StopMonitor
 * UnpauseMonitor
 * VoicemailUsersList
+* SIPpeerstatus
+* BridgeList
+* BridgeInfo
 
 Description of all commands and variables they need, you can find at
 https://wiki.asterisk.org/wiki/display/AST/Asterisk+11+AMI+Actions
@@ -297,6 +302,13 @@ All values, needed in commands, should passed like this:
         }
     });
 ```
+
+### Custom Action
+If there is not action you need inside available list, you may build action manual 
+and set all variables and fields by yourself. For example:
+```js
+var action = new amiio.Action.Action('MuteAudio');
+``` 
 
 ### Action Variables
 
