@@ -1,3 +1,21 @@
+# 2.0.0
+* Change AmiIo.Client#shouldReconnect -> AmiIo.Client#reconnectable
+
+#### Breaking changes
+* Drop nodejs v4.x support.
+* Remove QueueUnpause action. Use QueuePause instead, please.
+```js
+// Old
+const action = new Action.QueueUnpause(...args);
+// New
+const action = new Action.QueuePause();
+action.Paused = false;
+// or
+const action = new Action.QueuePause({ Paused: false });
+```
+* InterLoggers throw if called without `new`.
+
+
 ## 1.2.1
 Add `encoding` into config to allow replace default `ascii` encoding with `utf8`.  
 
