@@ -1,72 +1,33 @@
-var Logger = require('../lib/logger.js');
-var expect = require('chai').expect;
+const Logger = require('../lib/loggers/logger.js');
+const expect = require('chai').expect;
 
-
-describe('AmiIo.Logger', function(){
-
-  describe('#constructor()', function(){
-    it ('create instance of Logger', function(done){
+describe('AmiIo.Logger', function() {
+  describe('#constructor()', () => {
+    it ('creates instance of Logger', function(){
       expect(new Logger()).to.be.instanceOf(Logger);
-      done();
     });
 
-    it ('set level', function(done){
-      expect(new Logger('some').level).to.be.equal('some');
-      done();
+    it ('sets minimalLogLevel', function(){
+      expect(new Logger('some').minimalLogLevel).to.be.equal('some');
     })
 
   });
 
-  describe('#setLevel()', function(){
-
-    it('set level value', function(){
-      var l = new Logger();
-      l.setLevel('123de');
-      expect(l.level).to.be.equal('123de');
+  describe('#setMinimalLogLevel()', () => {
+    it('sets minimalLogLevel\'s value', function(){
+      const logger = new Logger();
+      logger.setMinimalLogLevel('123de');
+      expect(logger.minimalLogLevel).to.be.equal('123de');
     });
 
   });
 
-  describe('#trace()', function(){
-    it('not throw', function(done){
-      expect(Logger.prototype.trace).to.not.throw(Error);
-      done();
+  ['trace', 'debug', 'info', 'warn', 'error', 'fatal'].forEach((level) => {
+  describe(`#${level}()`, function(){
+    it('does not throw', function(){
+      const logger = new Logger();
+      expect(() => logger[level]()).to.not.throw(Error);
     });
-  });
-
-  describe('#debug()', function(){
-    it('not throw', function(done){
-      expect(Logger.prototype.debug).to.not.throw(Error);
-      done();
-    });
-  });
-
-  describe('#info()', function(){
-    it('not throw', function(done){
-      expect(Logger.prototype.info).to.not.throw(Error);
-      done();
-    });
-  });
-
-  describe('#warn()', function(){
-    it('not throw', function(done){
-      expect(Logger.prototype.warn).to.not.throw(Error);
-      done();
-    });
-  });
-
-  describe('#error()', function(){
-    it('not throw', function(done){
-      expect(Logger.prototype.error).to.not.throw(Error);
-      done();
-    });
-  });
-
-  describe('#fatal()', function(){
-    it('not throw', function(done){
-      expect(Logger.prototype.fatal).to.not.throw(Error);
-      done();
-    });
-  });
-
+  });    
 });
+  });

@@ -1,0 +1,48 @@
+extends:
+  - airbnb-base
+  - prettier
+
+plugins:
+  - prettier
+  - eslint-comments
+
+env:
+  es6: true
+  node: true
+
+rules:
+  prettier/prettier:
+    - error
+    - printWidth: 80
+      tabWidth: 2
+      semi: true
+      trailingComma: es5
+      bracketSpacing: true
+      jsxBracketSameLine: false
+      singleQuote: true
+
+  no-plusplus: off
+  func-names: off
+  linebreak-style: [off]
+  no-implicit-coercion: error
+  padding-line-between-statements: [
+      error,
+      { blankLine: always, prev: [const, let, var], next: "*" },
+      { blankLine: always, prev: "*", next: [const, let, var] },
+      { blankLine: any,    prev: [const, let, var], next: [const, let, var] },
+      { blankLine: always, prev: "*", next: return },
+      { blankLine: always, prev: "*", next: [case, default] },
+      { blankLine: always, prev: [const, let, var, block, block-like], next: [block, block-like] },
+      { blankLine: always, prev: directive, next: "*" },
+      { blankLine: any,    prev: directive, next: directive },
+  ]
+
+  import/no-named-as-default: off
+  import/newline-after-import: error
+
+  eslint-comments/disable-enable-pair: error
+  eslint-comments/no-duplicate-disable: error
+  eslint-comments/no-unlimited-disable: error
+  eslint-comments/no-unused-disable: warn
+  eslint-comments/no-unused-enable: warn
+
