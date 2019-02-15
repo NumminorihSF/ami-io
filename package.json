@@ -26,7 +26,7 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "coveralls": "^3.0.2",
-    "eslint": "^4.19.1",
+    "eslint": "^5.14.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-config-prettier": "^2.10.0",
     "eslint-plugin-eslint-comments": "^2.0.2",
