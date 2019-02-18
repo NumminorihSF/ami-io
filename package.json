@@ -32,7 +32,7 @@
     "eslint-plugin-eslint-comments": "^2.0.2",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-prettier": "^2.7.0",
-    "mocha": "^5.2.0",
+    "mocha": "^6.0.0",
     "nyc": "^11.9.0",
     "prettier": "^1.15.3"
   },
