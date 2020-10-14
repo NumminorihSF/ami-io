@@ -29,15 +29,6 @@ describe('AmiIo.Action', () => {
         expect(action.Action).to.be.equal('dvskljkljaer');
       });
     });
-
-    describe('#getId()', () => {
-      it('returns incremental id', () => {
-        const previousId = Action.Action.prototype.getId();
-        const currentId = Action.Action.prototype.getId();
-
-        expect(currentId).to.be.equal(previousId + 1);
-      });
-    });
   });
 
   for (const actionName in Action) {

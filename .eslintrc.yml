@@ -22,6 +22,9 @@ rules:
       singleQuote: true
 
   no-plusplus: off
+  consistent-return: off
+  no-underscore-dangle: off
+  no-param-reassign: off
   func-names: off
   linebreak-style: [off]
   no-implicit-coercion: error
